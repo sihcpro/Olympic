@@ -1,0 +1,26 @@
+# depslib dependency file v1.0
+1494690576 source:c:\users\sihc pro\desktop\doi tuyen olympic tin hoc\codeforce\main.cpp
+	<iostream>
+	<queue>
+	<string>
+	<vector>
+	<cmath>
+	<algorithm>
+	<queue>
+	<stack>
+	<fstream>
+	<string.h>
+
+1498585066 source:c:\users\tvquo\desktop\project\doi tuyen olympic tin hoc\codeforce\main.cpp
+	<iostream>
+	<queue>
+	<string>
+	<vector>
+	<cmath>
+	<algorithm>
+	<queue>
+	<stack>
+	<fstream>
+	<string.h>
+	<map>
+

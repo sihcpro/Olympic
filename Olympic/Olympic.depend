@@ -1,0 +1,39 @@
+# depslib dependency file v1.0
+1475300150 source:c:\users\sihc pro\desktop\doi tuyen olympic tin hoc\bai1\main.cpp
+	<iostream>
+	<sstream>
+	<fstream>
+	<cstdio>
+	<cstring>
+	<climits>
+	<cstdlib>
+	<cmath>
+	<algorithm>
+	<string>
+	<map>
+	<set>
+	<vector>
+	<stack>
+	<deque>
+	<queue>
+	<utility>
+
+1495202435 source:c:\users\sihc pro\desktop\doi tuyen olympic tin hoc\olympic\main.cpp
+	<iostream>
+	<queue>
+	<string>
+	<vector>
+	<cmath>
+	<algorithm>
+	<queue>
+	<stack>
+	<fstream>
+	<string.h>
+	<set>
+
+1498394941 source:c:\users\tvquo\desktop\project\doi tuyen olympic tin hoc\olympic\main.cpp
+	<bits/stdc++.h>
+
+1511065350 source:d:\desktop\project\doi tuyen olympic tin hoc\olympic\main.cpp
+	<bits/stdc++.h>
+
