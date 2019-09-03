@@ -5,7 +5,7 @@ bool nim(long long db)
 {
 	long long x= 0;
 	for(long long i= 0; i < db; i++)
-        x^= b[i];
+		x^= b[i];
 
 	for(long long i= 0; i < db; i++)
 	{

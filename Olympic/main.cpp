@@ -43,11 +43,22 @@ typedef pair<ll, ll> cap;
 typedef priority_queue<cap> pqmax;
 typedef priority_queue<cap, vector<cap>, greater<cap> > pqmin;
 
-ll junger= 0, mid= 0, top= 0, bot= 0, result= 0, sum= 0, s= 0, t= 0, d= 0, l= 0, sp= 0, k= 0, x, y, n, m, test, r;
+ll junger= 0, mid= 0, top= 0, bot= 0, result= 0, sum= 0, s= 0, t= 0, d= 0, l= 0, sp= 0, k= 0, x, y, n, m, test, r, cnt;
 bool kt= false, t1= false, t2= false;
 string s1, s2;
 
+struct fact{
+	int fact;
+	int x, y;
+};
 
+bool compare(fact a, fact b) {
+	if (a.x == b.x) {
+		return a.y < b.y;
+	} else {
+		return a.x < b.x;
+	}
+}
 
 int main(){
 	ios::sync_with_stdio(false);
@@ -55,48 +66,66 @@ int main(){
 	// freopen("test.txt", "r", stdin);
 	// freopen("out.txt", "w", stdout);
 
-	while( cin >> n ){
-		int a[2][n+5];
-		rep(0,i,2) {
-			rep(0,j,n) {
-				cin >> a[i][j];
+	while( cin >> n >> m ){
+		fact f[m];
+		rep(0, i, m) {
+			cin >> f[i].fact >> f[i].x >> f[i].y;
+			f[i].x--;
+			f[i].y--;
+		}
+
+		sort(f, f + m, compare);
+
+		int b[1001] = {0};
+		int fact_1 = 0;
+		kt = true;
+		rep(0, i , m) {
+			if(f[i].fact == 1) {
+				rep(f[i].x + 1, j, min(f[i].y + 1, (int)n)) {
+					b[j] = 1;
+				}
 			}
 		}
-
-		ll b[2][n+5], c[2][n+5], sp1[2], sp2[2];
-		setA(b[0], 0)
-		setA(b[1], 0)
-		setA(c[0], 0)
-		setA(c[1], 0)
-
-		repd(n,i,0) {
-			rep(0,j,2) {
-				c[j][i] = c[j][i+1] + a[j][i];
+		rep(0, i , m) {
+			if(f[i].fact == 0) {
+				bool kt2 = false;
+				rep(f[i].x + 1, j, min(f[i].y + 1, (int)n)) {
+					if(b[j] == 0) {
+						b[j] = -1;
+						kt2 = true;
+						break;
+					} else if (b[j] == -1) {
+						kt2 = true;
+						break;
+					}
+				}
+				if (!kt2) {
+					cout << "NO\n";
+					kt=false;
+					break;
+				}
 			}
+			if (!kt) break;
+		}
+		if (!kt) continue;
+
+		int init = 1001;
+		int a[1001] = {0};
+		int j = 0;
+		rep(0, i, n) {
+			init += b[i];
+			a[i] = init;
 		}
 
-		repd(n,i,0) {
-			// b[0][i] = b[0][i+1] + (2*n)*a[0][i] - c[0][i+1];
-			b[0][i] = b[0][i+1] + (2*n-1)*a[0][i] + (2*i)*a[1][i] - c[0][i+1] - c[1][i+1];
-			b[1][i] = b[1][i+1] + (2*n-1)*a[1][i] + (2*i)*a[0][i] - c[1][i+1] - c[0][i+1];
-			// cout << i << " " << (2*i+1) << " " << b[0][i] << " " << b[1][i] << endl;
+		cout << "YES\n";
+		// rep(0, i, n) {
+		// 	cout << b[i] << " ";
+		// }
+		// cout << endl;
+		rep(0, i, n) {
+			cout << a[i] << " ";
 		}
-		// cout << "-----------------------------\n";
-
-		int j= 0;
-		ll maxS = b[1][0];
-		sp= 0;
-		rep(0,i,2*n) {
-			if( i%2 == 1 )
-				j= 1-j;
-			else
-				maxS = max(maxS, sp+b[1-j][i/2]);
-			sp+= i*a[j][i/2];
-			// cout << i/2 << " " << j << " = " << sp << " -> " << maxS << endl;
-		}
-		// cout << "-----------------------------\n";
-
-		cout << maxS << endl;
+		cout << endl;
 	}
 
 	return 0;
